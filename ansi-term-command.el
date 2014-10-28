@@ -1,4 +1,4 @@
-;;; ansi-term-command.el--- Run commands with args in ansi-term buffers
+;;; ansi-term-command.el --- Run commands with args in ansi-term buffers
 
 ;;; Author: Daniel Ralston <Wubbulous@gmail.com>
 ;;; Version: 0.1.0
@@ -62,3 +62,5 @@
     (switch-to-buffer term-ansi-buffer-name)))
 
 (provide 'ansi-term-command)
+
+;;; ansi-term-command.el ends here
