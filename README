@@ -1,0 +1,17 @@
+Emacs' `eshell' is great until you want to run a command that needs a
+full ANSI terminal. Eshell can run Lisp commands, so you *could* use
+`ansi-term', but, `ansi-term' doesn't accept a command with
+command-line arguments.
+
+But, that's okay, because `ansi-term-command' does!
+
+Just load this extension up, open up an eshell, and try this:
+
+ $ ansi-term-command nano ~/.emacs
+
+Or this:
+
+ $ ansi-term-command nethack
+
+Like it? You might want to alias it to something. (I have it aliased
+to 'atc' in my emacs config.)
