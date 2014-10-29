@@ -1,7 +1,7 @@
 ;;; ansi-term-command.el --- Run commands with args in ansi-term buffers
 
 ;;; Author: Daniel Ralston <Wubbulous@gmail.com>
-;;; Version: 0.1.0
+;;; Version: 0.1.1
 ;;; Url: https://github.com/Sodel-the-Vociferous/inline-crypt-el
 ;;; Keywords: terminal, eshell
 
@@ -29,6 +29,11 @@
 
 
 ;;; Code:
+
+;;;###autoload
+(defun ansi-term-command-setup-atc-alias ()
+  (interactive)
+  (defalias 'atc 'ansi-term-command))
 
 ;;;###autoload
 (defun ansi-term-command (program &rest switches)
