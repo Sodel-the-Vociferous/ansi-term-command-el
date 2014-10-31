@@ -49,12 +49,11 @@
                                           (getenv "SHELL")
                                           "/bin/sh"))))
 
-  (let* ((switches-str (if (stringp switches)
-                           switches
-                         (mapconcat 'identity switches " ")))
+  (let* ((switches-str (mapconcat (lambda (x) (format "%s" x))
+                                  switches " "))
          (new-buffer-name (generate-new-buffer-name
                            (concat "*" "ansi:" program "*")))
-         (term-ansi-buffer-name (term-ansi-make-term new-buffer-name program)))
+         (term-ansi-buffer-name (term-ansi-make-term new-buffer-name program nil switches-str)))
     (set-buffer term-ansi-buffer-name)
     (term-mode)
     (term-char-mode)
