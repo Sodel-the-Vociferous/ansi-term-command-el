@@ -53,7 +53,10 @@
                                   switches " "))
          (new-buffer-name (generate-new-buffer-name
                            (concat "*term:" program "*")))
-         (term-ansi-buffer-name (term-ansi-make-term new-buffer-name program nil switches-str)))
+         (term-ansi-buffer-name
+          (if (string-empty-p switches-str)
+              (term-ansi-make-term new-buffer-name program)
+            (term-ansi-make-term new-buffer-name program nil switches-str))))
     (set-buffer term-ansi-buffer-name)
     (term-mode)
     (term-char-mode)
