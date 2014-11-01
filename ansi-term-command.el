@@ -52,7 +52,7 @@
   (let* ((switches-str (mapconcat (lambda (x) (format "%s" x))
                                   switches " "))
          (new-buffer-name (generate-new-buffer-name
-                           (concat "*" "ansi:" program "*")))
+                           (concat "*term:" program "*")))
          (term-ansi-buffer-name (term-ansi-make-term new-buffer-name program nil switches-str)))
     (set-buffer term-ansi-buffer-name)
     (term-mode)
