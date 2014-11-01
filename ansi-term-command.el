@@ -36,7 +36,7 @@
   (defalias 'atc 'ansi-term-command))
 
 ;;;###autoload
-(defun ansi-term-command (program &rest switches)
+(defun ansi-term-command (program &rest switch-strs)
   "Start a terminal-emulator in a new buffer."
 
   ;; This seems wasteful, just to get the program name. But I'm lazy,
@@ -49,14 +49,11 @@
                                           (getenv "SHELL")
                                           "/bin/sh"))))
 
-  (let* ((switches-str (mapconcat (lambda (x) (format "%s" x))
-                                  switches " "))
-         (new-buffer-name (generate-new-buffer-name
+  (let* ((new-buffer-name (generate-new-buffer-name
                            (concat "*term:" program "*")))
          (term-ansi-buffer-name
-          (if (string-empty-p switches-str)
-              (term-ansi-make-term new-buffer-name program)
-            (term-ansi-make-term new-buffer-name program nil switches-str))))
+          (apply #'term-ansi-make-term new-buffer-name program nil
+                 (list-utils-flatten switch-strs))))
     (set-buffer term-ansi-buffer-name)
     (term-mode)
     (term-char-mode)
